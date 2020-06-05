@@ -1,11 +1,23 @@
+import exceptions.PersistenceException;
 import modelo.Tipo;
 import persistence.Dao;
 import persistence.IDao;
+import utils.Return;
 
 public class TesteTipo {
     public static void main(String[] args) {
         //testeModelo();
         testeListAll();
+        Tipo t = new Tipo();
+        t.setNome("Tipo de Teste");
+        Dao d = new Dao(t);
+
+        try {
+           Return rt =  d.insert(t);
+            System.out.println(rt);
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
 
     }
 

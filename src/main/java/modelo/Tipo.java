@@ -27,12 +27,20 @@ public @Data class Tipo extends Table {
         return true;
     }
 
+    public Object getColumnValue(String s) {
+        if(s.equals("idTipo")){
+            return this.getPk();
+        }else if(s.equals("tipo")){
+            return this.getNome();
+        }
+        return null;
+    }
+
     public String getPkColumnName() {
         return "idTipo";
     }
 
     public boolean usePkInInsert() {
-        //TODO é só para teste
-        return true;
+        return false;
     }
 }
