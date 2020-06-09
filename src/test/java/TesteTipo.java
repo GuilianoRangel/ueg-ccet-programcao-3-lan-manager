@@ -8,6 +8,24 @@ public class TesteTipo {
     public static void main(String[] args) {
         //testeModelo();
         testeListAll();
+        //testeInsert();
+        Tipo t = new Tipo();
+        Dao d = new Dao(t);
+
+        t.setPk(5);
+        t.setNome("Tipo sem Acesso");
+
+        Return rt = null;
+        try {
+            rt = d.update(t);
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        System.out.println(rt);
+
+    }
+
+    private static void testeInsert() {
         Tipo t = new Tipo();
         t.setNome("Tipo de Teste");
         Dao d = new Dao(t);
@@ -18,7 +36,6 @@ public class TesteTipo {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
-
     }
 
     private static void testeListAll() {
